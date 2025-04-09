@@ -187,7 +187,7 @@ h1 {
 .about {
     text-align: center;
     padding: 80px 5%;
-    background-image: url('index/about.png');
+    background-image: url('about.png');
     position: relative;
 }
 
@@ -383,7 +383,7 @@ h1 {
     grid-template-columns: 1fr repeat(3, 350px) 1fr;
     grid-gap: 20px;
     padding: 40px 10%;
-    background-image: url('index/about.png');
+    background-image: url('about.png');
     position: relative;
     z-index: 1;
 }
