@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NineFive Express</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">NineFive Express</div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="../Index.html/index.html" class="Home">Home</a></li>
+                    <li><a href="../Order.html/Order.html" class="Order Now">Order Now</a></li>
+                    <li><a href="../About/about.html" class="About Us">About Us</a></li>
+                    <li><a href="../Blog/blog.html" class="Blog">Blog</a></li>
+                    <li><a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a></li>
+                </ul>
+            </div>
+            <a href="../Partner/partner.html" class="partner-btn">Become a Partner</a>
+            <div class="hamburger">&#9776;</div>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Get In Touch</h2>
+                <p>We're here to help! Whether you have questions about our services, need assistance with an order, or just want to say hello,  please don't hesitate to reach out. Our team is committed to providing prompt and helpful responses. </p>
+            </div>
+        </section>
+        <section class="contact-section">
+            <div class="contact-image">
+                <img src="contact/Gett.jpg" alt="Contact Information" />
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <input type="text" id="subject" placeholder="Your Subject" required>
+                    <textarea id="message" placeholder="Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links-container');
+
+            hamburger.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
+</body>
+</html>

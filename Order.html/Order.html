@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NineFive Express</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(19, 15, 30, 0.15);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .nav-links-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #343a40;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: #28a745;
+        }
+
+        .partner-btn {
+            background-color: #130f1e;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .partner-btn:hover {
+            background-color: #1e7e34;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #28a745;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #343a40;
+        }
+
+        @media (max-width: 768px) {
+            .partner-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .nav-links-container {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            }
+
+            .nav-links-container.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .main-content {
+                flex-direction: row; /* Change to row to place cart beside content */
+            }
+
+            .sidebar {
+                width: 70%;
+                border-right: 1px solid #e9ecef;
+            }
+
+            .cart {
+                width: 35%; /* Slightly wider cart on mobile */
+                padding: 8px; /* Reduced padding */
+            }
+
+            .cart h2 {
+                font-size: 18px; /* Reduced cart title size */
+                margin-bottom: 8px; /* Reduced margin */
+            }
+
+            .cart-item {
+                padding: 3px 0; /* Reduced padding */
+            }
+
+            .cart-item img {
+                width: 25px; /* Reduced cart item image size */
+                margin-right: 3px; /* Reduced margin */
+            }
+
+            .cart-item span {
+                font-size: 12px; /* Reduced cart item text size */
+            }
+
+            .checkout-summary div span {
+                font-size: 12px; /* Reduced checkout summary text size */
+            }
+
+            .checkout-btn {
+                font-size: 12px; /* Reduced checkout button text size */
+                padding: 6px 10px; /* Reduced button padding */
+            }
+
+            .meals .dish img, .drinks .dish img, .proteins .dish img {
+                max-width: 35%; /* Further reduce drink image size on mobile */
+            }
+
+            .cart {
+                width: 30%;
+                border-left: 1px solid #e9ecef;
+            }
+
+            .restaurant-list, .meals, .drinks, .proteins {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .restaurant-list .restaurant-card img {
+                max-width: 70px; /* Further reduce size */
+            }
+
+            .meals .dish h3, .drinks .dish h3, .proteins .dish h3 {
+                font-size: 11px; /* Further reduce size */
+            }
+
+            .meals .dish p, .drinks .dish p, .proteins .dish p {
+                font-size: 13px; /* Further reduce size */
+            }
+
+            .restaurant-title, .meals-title, .drinks-title, .proteins-title {
+                font-size: 16px; /* Further reduce size */
+            }
+        }
+
+        .reduced-height-image {
+            width: auto;
+            height: 130px; /* Further reduce size */
+        }
+
+        .main-content {
+            display: flex;
+            width: 100%;
+            background-color: white;
+        }
+
+        .sidebar {
+            width: 70%;
+            padding: 10px;
+            border-right: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .horizontal-image {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .horizontal-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .restaurant-title, .meals-title, .drinks-title, .proteins-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #1a2f60;
+        }
+
+        .restaurant-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-list .restaurant-card img {
+            max-width: 100px;
+            height: auto;
+            object-fit: contain;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .restaurant-list .restaurant-card {
+            border: 1px solid #e9ecef;
+            padding: 8px;
+            margin-right: 10px;
+            cursor: pointer;
+            border-radius: 15px;
+            background-color: #ced4da;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .restaurant-list .restaurant-card.active {
+            background-color: #1a2f60;
+            color: white;
+        }
+
+        .restaurant-list .restaurant-card:hover {
+            background-color: #FFC107;
+        }
+
+        .meals, .drinks, .proteins {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .meals .dish, .drinks .dish, .proteins .dish {
+            border: 1px solid #e9ecef;
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .meals .dish:hover, .drinks .dish:hover, .proteins .dish:hover {
+            transform: scale(1.03);
+        }
+
+        .meals .dish img, .drinks .dish img, .proteins .dish img {
+            max-width: 80%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .meals .dish h3, .drinks .dish h3, .proteins .dish h3 {
+            margin-top: -8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .meals .dish p, .drinks .dish p, .proteins .dish p {
+            margin-top: -8px;
+            font-size: 16px;
+            color: #666;
+            margin: 1;
+        }
+
+        .meals .dish button, .drinks .dish button, .proteins .dish button {
+            background-color: #130f1e;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .meals .dish button:hover, .drinks .dish button:hover, .proteins .dish button:hover {
+            background-color: #007bff;
+        }
+
+        .cart {
+            width: 30%;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-left: 1px solid #e9ecef;
+        }
+
+        .cart-items {
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e9ecef;
+            padding: 5px 0;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 30px;
+            margin-right: 5px;
+            border-radius: 4px;
+        }
+
+        .checkout-summary {
+            text-align: right;
+        }
+
+        .checkout-summary div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+
+        .checkout-btn {
+            background-color: #1a2f60;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: #15254d;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            max-width: 90%;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #333;
+            text-decoration: none;
+        }
+
+        #checkoutForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #checkoutForm label {
+            margin-bottom: 3px;
+            font-weight: 600;
+            color: #333;
+            font-size: 12px;
+        }
+
+        #checkoutForm input[type="text"],
+        #checkoutForm input[type="tel"] {
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        #checkoutForm input[type="text"]:focus,
+        #checkoutForm input[type="tel"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        #checkoutForm button {
+            background-color: #130f1e;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            width: 59%;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+            margin: 8px auto;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        #checkoutForm button:hover {
+            background-color: #0056b3;
+        }
+
+        .notification {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 12px 16px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            z-index: 1001;
+            display: none;
+        }
+
+        .notification.error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .notification.success {
+            border-color: #28a745;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="brand">
+                    NineFive Express
+                </div>
+                <div class="nav-links-container">
+                    <ul class="nav-links">
+                        <li><a href="../Index.html/index.html" class="Home">Home</a></li>
+                        <li><a href="../About/about.html" class="About Us">About Us</a></li>
+                        <li><a href="../Blog/blog.html" class="Blog">Blog</a></li>
+                        <li><a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a></li>
+                    </ul>
+                </div>
+                <a href="../Partner/partner.html" class="partner-btn">Become a Partner</a>
+                <div class="hamburger">&#9776;</div>
+            </nav>
+        </header>
+        <section class="main-content">
+            <aside class="sidebar">
+                <div class="horizontal-image">
+                    <img src="order/ad.jpg" class="reduced-height-image" alt="Reduced Height Image">
+                </div>
+                <div class="restaurant-title">Restaurants 🧑‍🍳</div>
+                <div class="restaurant-list" id="restaurantList">
+                </div>
+                <div class="meals-title">Meals</div>
+                <div class="meals" id="meals">
+                </div>
+                <div class="drinks-title">Drinks</div>
+                <div class="drinks" id="drinks">
+                </div>
+                <div class="proteins-title">Proteins</div>
+                <div class="proteins" id="proteins">
+                </div>
+            </aside>
+            <aside class="cart">
+                <h2>My Cart</h2>
+                <div class="cart-items" id="cartItems">
+                </div>
+                <div class="checkout-summary">
+                    <div class="final-price">
+                        <span>Final</span>
+                        <span id="finalPrice">₦0</span>
+                    </div>
+                    <div class="discount">
+                        <span>Discount</span>
+                        <span id="discount">₦0</span>
+                    </div>
+                    <div class="final-total">
+                        <span>Final</span>
+                        <span id="finalTotal">₦0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="openCheckoutModal()">Checkout</button>
+                </div>
+            </aside>
+        </section>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            <h2>Checkout Details</h2>
+            <form id="checkoutForm">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required><br><br>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+
+                <label for="landmark">Landmark:</label>
+                <input type="text" id="landmark" name="landmark" required><br><br>
+
+                <button type="button" onclick="processCheckout()">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="errorNotification" class="notification error"></div>
+    <div id="successNotification" class="notification success"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('checkoutModal').style.display = 'none';
+
+            const restaurants = [
+                {
+                    id: 1, logo: 'order/mamy.jpg', menu: [
+                        { id: 101, name: 'Jollof Rice', price: 3000, image: 'order/jr.png', protein: 'Chicken', category: 'meal' },
+                        { id: 102, name: 'Yam and Egg', price: 2500, image: 'order/yam.png', protein: 'Beef', category: 'meal' },
+                        { id: 103, name: 'Spaghetti', price: 2500, image: 'order/spaghetti.png', protein: 'Chicken', category: 'meal' },
+                        { id: 104, name: 'Fried Rice', price: 3000, image: 'order/fried.png', protein: 'Egg', category: 'meal' },
+                        { id: 105, name: 'Orange Juice', price: 1500, image: 'order/orange.png', category: 'drink' },
+                        { id: 106, name: 'Fanta', price: 500, image: 'order/fanta.png', category: 'drink' },
+                        { id: 105, name: 'Pepsi', price: 500, image: 'order/pepsi.png', category: 'drink' },
+                        { id: 106, name: 'Bottle Water', price: 200, image: 'order/water.png', category: 'drink' },
+                        { id: 107, name: 'Chicken Breast', price: 3000, image: 'order/chicken.png', category: 'protein' },
+                        { id: 108, name: 'Beef Steak', price: 2500, image: 'order/beef.png', category: 'protein' },
+                        { id: 107, name: 'Chicken Breast', price: 3000, image: 'order/chicken.png', category: 'protein' },
+                        { id: 108, name: 'Beef Steak', price: 2500, image: 'order/beef.png', category: 'protein' },
+                    ]
+                },
+                {
+                    id: 2, logo: 'order/BY.jpg', menu: [
+                        { id: 201, name: 'Yam and Egg', price: 2000, image: 'order/yam.png',protein: 'Beef', category: 'meal' },
+                        { id: 202, name: 'Jollof Rice', price: 2500, image: 'order/jr.png', protein: 'Chicken', category: 'meal' },
+                        { id: 203, name: 'Fried Rice', price: 2500, image: 'order/fried.png', protein: 'Egg', category: 'meal' },
+                        { id: 204, name: 'Spaghetti', price: 2500, image: 'order/spaghetti.png', protein: 'Ham', category: 'meal' },
+                        { id: 205, name: 'Bottle Water', price: 200, image: 'order/water.png', category: 'drink' },
+                        { id: 206, name: 'Orange Juice', price: 1500, image: 'order/orange.png', category: 'drink'  },
+                        { id: 207, name: 'Chicken Breast', price: 3000, image: 'order/chicken.png',category:'protein' },
+                        { id: 208, name: 'Beef Steak', price: 2500, image: 'order/beef.png', category: 'protein' },
+                    ]
+                },
+                {
+                    id: 3,logo: 'order/IBOM.jpg', menu:  [
+                        { id: 301, name:  'Fried Rice', price: 2500, image: 'order/fried.png',protein: 'Beef', category: 'meal' },
+                        { id: 302, name: 'Jollof Rice', price: 2500, image: 'order/jr.png',  protein: 'Chicken', category: 'meal' },
+                        { id: 303, name: 'Spaghetti', price: 2500, image: 'order/spaghetti.png', protein: 'Egg', category: 'meal' },
+                        { id: 304, name: 'Yam and Egg', price: 2000, image: 'order/yam.png', protein: 'Veggie', category: 'meal' },
+                        { id: 305, name: 'Pepsi', price: 500, image: 'order/pepsi.png', category: 'drink' },
+                        { id: 306, name: 'Fanta', price: 500, image: 'order/fanta.png',category: 'drink' },
+                        { id: 307, name: 'Bottle Water', price: 200, image: 'order/water.png',category: 'drink' },
+                        { id: 308, name: 'Beef Steak', price: 2500, image: 'order/beef.png', category: 'protein' },
+                        { id: 309, name: 'Chicken Breast', price: 3000, image: 'order/chicken.png', category: 'protein' },
+                    ]
+                },
+                {
+                    id: 4 ,logo: 'order/VIBES.jpg',  menu: [
+                        { id: 401, name: 'Spaghetti', price: 2500, image: 'order/spaghetti.png', protein: 'Chicken', category: 'meal' },
+                        { id: 402, name: 'Yam and Egg', price: 2000, image: 'order/yam.png', protein: 'Beef', category: 'meal' },
+                        { id: 403, name: 'Fried Rice', price: 2500, image: 'order/fried.png', protein: 'Egg', category: 'meal' },
+                        { id: 404, name: 'Jollof Rice', price: 2500, image: 'order/jr.png',  protein: 'Shrimp', category: 'meal' },
+                        { id: 405, name: 'Bottle Water', price: 200, image: 'order/water.png', category: 'drink' },
+                        { id: 406, name: 'Fanta', price: 500, image: 'order/fanta.png', category: 'drink' },
+                        { id: 407, name:  'Beef Steak', price: 2500, image: 'order/beef.png', category: 'protein' },
+                        { id: 408, name: 'Chicken Breast', price: 3000, image: 'order/chicken.png', category: 'protein' },
+                    ]
+                },
+            ];
+
+            const restaurantList = document.getElementById('restaurantList');
+            restaurants.forEach(restaurant => {
+                const restaurantCard = document.createElement('div');
+                restaurantCard.classList.add('restaurant-card');
+                restaurantCard.innerHTML = `
+                    <img src="${restaurant.logo}" alt="${restaurant.name} Logo">
+                `;
+                restaurantCard.addEventListener('click', () => showMenu(restaurant.id));
+                restaurantList.appendChild(restaurantCard);
+            });
+
+            showMenu(restaurants[0].id);
+
+            function showMenu(restaurantId) {
+                const selectedRestaurant = restaurants.find(r => r.id === restaurantId);
+                const meals = document.getElementById('meals');
+                const drinks = document.getElementById('drinks');
+                const proteins = document.getElementById('proteins');
+
+                meals.innerHTML = '';
+                drinks.innerHTML = '';
+                proteins.innerHTML = '';
+
+                selectedRestaurant.menu.forEach(dish => {
+                    const dishElement = document.createElement('div');
+                    dishElement.classList.add('dish');
+                    dishElement.innerHTML = `
+                        <img src="${dish.image}" alt="${dish.name}">
+                        <h3>${dish.name}</h3>
+                        <p>₦${dish.price}</p>
+                        <button onclick="addToCart(${dish.id}, '${dish.name}', ${dish.price}, '${dish.image}')">+</button>
+                    `;
+
+                    if (dish.category === 'meal') {
+                        meals.appendChild(dishElement);
+                    } else if (dish.category === 'drink') {
+                        drinks.appendChild(dishElement);
+                    } else if (dish.category === 'protein') {
+                        proteins.appendChild(dishElement);
+                    }
+                });
+            }
+
+            const cart = [];
+            let totalPrice = 0;
+
+            window.addToCart = (dishId, dishName, dishPrice, dishImage) => {
+                cart.push({ id: dishId, name: dishName, price: dishPrice, image: dishImage });
+                totalPrice += dishPrice;
+                updateCart();
+            };
+
+            function updateCart() {
+                const cartItems = document.getElementById('cartItems');
+                cartItems.innerHTML = '';
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <span>${item.name}</span>
+                        <span>₦${item.price}</span>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+
+                document.getElementById('finalPrice').textContent = `₦${totalPrice.toFixed(2)}`;
+                document.getElementById('finalTotal').textContent = `₦${totalPrice.toFixed(2)}`;
+            }
+
+            window.openCheckoutModal = () => {
+                document.getElementById('checkoutModal').style.display = 'block';
+            };
+
+            window.closeCheckoutModal = () => {
+                document.getElementById('checkoutModal').style.display = 'none';
+            };
+
+            window.processCheckout = () => {
+                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value;
+                const landmark = document.getElementById('landmark').value;
+
+                if (!address || !phone || !landmark) {
+                    showNotification('Please fill in all checkout details.', 'error');
+                    return;
+                }
+
+                console.log('Address:', address);
+                console.log('Phone:', phone);
+                console.log('Landmark:', landmark);
+                console.log('Cart Items:', cart);
+                console.log('Total Price:', totalPrice);
+
+                showNotification('Order Confirmed, Your meal is on its way!', 'success');
+                closeCheckoutModal();
+                cart.length = 0;
+                totalPrice = 0;
+                updateCart();
+            };
+
+            function showNotification(message, type) {
+                const notificationElement = document.getElementById(type === 'error' ? 'errorNotification' : 'successNotification');
+                notificationElement.textContent = message;
+                notificationElement.style.display = 'block';
+
+                setTimeout(() => {
+                    notificationElement.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links-container');
+
+            hamburger.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

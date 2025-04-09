@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="commitment.css">
+</head>
+<body>
+    <header>
+      
+        <nav class="navbar">
+            <div class="brand">
+                NineFive Express
+            </div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="../Index.html/index.html" class="Home">Home</a></li>
+                    <li><a href="../Order.html/Order.html" class="Order Now">Order Now</a></li>
+                    <li><a href="../About/about.html" class="About Us">About Us</a></li>
+                    <li><a href="../Blog/blog.html" class="Blog">Blog</a></li>
+                    <li><a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a></li>
+                </ul>
+            </div>
+            <a href="../Partner/partner.html" class="partner-btn">Become a Partner</a>
+            <div class="hamburger">&#9776;</div>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The NineFive Express<span style="color: #FF6600;"> Food </span> Delivery <span style="color: #FF6600;">Experience </span></h1>
+        </div>
+        <div class="image-content">
+            <img src="blog/sociall.png" alt="Blog Image">
+        </div>
+    </section>
+    <div class="blog-content-wrapper"> <section class="blog-content">
+            <p class="first-paragraph">At NineFive Express, we don’t just deliver goods. We deliver impact. We believe that businesses should do more than turn a profit — they should serve the communities they operate in.</p>
+
+            <p>That’s why we’ve made social responsibility a core part of our mission. From the beginning, we’ve engaged in meaningful projects that uplift lives, support sustainability, and foster unity.</p>
+
+            <p>We support local food banks by delivering donated meals free of charge. We run monthly school supply drives for underprivileged children and actively participate in neighborhood clean-ups and public awareness campaigns. In times of crisis, such as during floods or health emergencies, we mobilize our fleet to assist with relief distribution.</p>
+
+            <p>Internally, we invest in the people who work with us. Our riders receive wellness support, safety training, and career growth opportunities. We create spaces for their voices to be heard and their families to be supported.</p>
+
+            <p>We also champion eco-conscious initiatives — exploring electric bikes, minimizing single-use packaging, and working with vendors who share our values. To us, “express” isn’t just about speed. It’s about expressing care, kindness, and commitment. Because when communities thrive, so do we. That’s what makes NineFive Express more than a service. It makes us a movement.</p>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links-container');
+
+            hamburger.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                NineFive Express
+            </div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="../Index.html/index.html" class="Home">Home</a></li>
+                    <li><a href="../Order.html/Order.html" class="Order Now">Order Now</a></li>
+                    <li><a href="../About/about.html" class="About Us">About Us</a></li>
+                    <li><a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a></li>
+                </ul>
+            </div>
+            <a href="../Partner/partner.html" class="partner-btn">Become a Partner</a>
+            <div class="hamburger">&#9776;</div>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore the <span style="color: #FF6600;">Blog</span> & Stay <span style="color: #FF6600;">Informed</span></h1>
+            <p>Dive into our latest posts for engaging content, valuable <br> information, and community updates.</p>
+        </div>
+        <div class="image-content">
+            <img src="blog/Blog.png" alt="Blog Image">
+        </div>
+    </section>
+    <section class="blogs" id="blogs">
+        <div class="blog-grid">
+            <article class="blog-post">
+                <div class="blog-image">
+                    <img src="blog/traffic.jpg" alt="Traffic">
+                </div>
+                <div class="blog-content">
+                    <a href="Traffic.html" class="blog-title"> Navigating Traffic: Our Secret to Swift Deliveries</a>
+                    <p class="blog-excerpt">Traffic is a global challenge that affects delivery services across cities big and small.</p>
+                    <a href="traffic.html" class="read-more">Read More</a>
+                </div>
+            </article>
+            <article class="blog-post">
+                <div class="blog-image">
+                    <img src="blog/delivery.jpg" alt="Delivery">
+                </div>
+                <div class="blog-content">
+                    <a href="Delivery.html" class="blog-title">The NineFive Express Food Delivery Experience</a>
+                    <p class="blog-excerpt">There’s something comforting about the knock on your door that signals your food has arrived.</p>
+                    <a href="Delivery.html" class="read-more">Read More</a>
+                </div>
+            </article>
+            <article class="blog-post">
+                <div class="blog-image">
+                    <img src="blog/Partner.jpg" alt="Partnering">
+                </div>
+                <div class="blog-content">
+                    <a href="Partner.html" class="blog-title">Partnering with NineFive Express</a>
+                    <p class="blog-excerpt">In today’s business landscape, where customer expectations are sky-high and patience is in short supply.</p>
+                    <a href="Partner.html" class="read-more">Read More</a>
+                </div>
+            </article>
+            <article class="blog-post">
+                <div class="blog-image">
+                    <img src="blog/social.jpg" alt="Commitment">
+                </div>
+                <div class="blog-content">
+                    <a href="Commitment.html" class="blog-title">NineFive Express and Our Commitment to Community</a>
+                    <p class="blog-excerpt">At NineFive Express, we don’t just deliver goods. We deliver impact. We believe that businesses should do more than turn a profit.</p>
+                    <a href="Commitment.html" class="read-more">Read More</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links-container');
+
+            hamburger.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+   <link rel="stylesheet" href="style.css">
+
+   <script src="Script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <a href="../Index.html/index.html" class="Home">NineFive Express</a> </title>
+
+</head>
+<body>
+   
+    <header>
+
+        <nav class="navbar">
+            <div class="brand">
+                NineFive Express
+            </div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="../Order.html/Order.html" class="Order Now">Order Now</a></li>
+                    <li><a href="../About/about.html" class="About Us">About Us</a></li>
+                    <li><a href="../Blog/blog.html" class="Blog">Blog</a></li>
+                    <li><a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a></li>
+                </ul>
+            </div>
+            <a href="../Partner/partner.html" class="partner-btn">Become a Partner</a>
+        <div class="hamburger">&#9776;</div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="tagline">SUPER QUICK DELIVERY | ZERO STRESS
+                </span>
+
+            <h1> Swift <span style="color: #FF6600;">Delivery</span> & <br> Easy <span style="color: #FF6600;">Pickup</span></h1>
+            <p>Get your meals delivered straight to your door
+            </p>
+            <p>Just tap and we dey come!
+            </p>
+            <div class="order-box">
+                <button class="order-btn" onclick="location.href='../Order.html/order.html';">Order Now</button>
+            </div>
+        </div>
+            <div class="image-content">
+                <img src="index/herooo.png" alt="Fast Delivery">
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2>What We Serve</h2>
+            <h1>Your Favourite Food Delivery Partner</h1>
+            <div class="services-container">
+                <div class="service-item">
+                    <img src="index/order.png" alt="Easy To Order">
+                    <h3>Easy To Order</h3>
+                    <p>Ordering your favourite meal is just a few simple steps away
+
+                    </p>
+                </div>
+                <div class="service-item">
+                    <img src="index/delivery.png" alt="Fastest Delivery">
+                    <h3>Fastest Delivery</h3>
+                    <p>We deliver right on time, every time. even faster. </p>
+                </div>
+                <div class="service-item">
+                    <img src="index/quality.png" alt="Best Quality">
+                    <h3>Best Quality</h3>
+                    <p>Our delivered meals aren’t just quick — they’re top quality. </p>
+                </div>
+            </div>
+            <section class="learn-more-section">
+                    <button class="learn-more-btn" onclick="location.href='../About/about.html';">Learn More</button>
+                </div>
+            </section>
+            
+        </section>
+
+         <section class="testimonials">
+        <div class="testimonial-text">
+            <h2>What Our Customers Say</h2>
+            <p>Real words from real people. From busy students to working mums, our customers  <br> can't stop talking about how easy, fast, and reliable our delivery service is.  <br> We deliver more than meals—we deliver peace of mind.</p>
+
+        </div>
+
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="index/Adel.jpg" alt="Mehwish">
+                    <div>
+                        <h4>Adel Jumoke</h4>
+                        <p>"I was pleasantly surprised by how fast everything arrived—no stress, no delays. This is how food delivery should be!"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial highlighted">
+                <div class="profile">
+                    <img src="index/Okafor.jpeg" alt="Elizabeth Jeff">
+                    <div>
+                        <h4>Saliu Bilalat</h4>
+                        <p><Bold>"Honestly, I didn’t expect much at first, but you guys proved me wrong. Super smooth ordering and it came piping hot!"</bold></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="index/Favour.jpeg" alt="Emily Thomas">
+                    <div>
+                        <h4>Favour Okafor</h4>
+                        <p>"I don’t have time for kitchen stress after work. This company has been my lifesaver. Everything shows up like magic!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq-section">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+            <button class="faq-question">How do I place an order?<span>+</span></button>
+            <div class="faq-answer">You can place an order directly through our website. Simply browse our menu, add items to your cart, and proceed to checkout.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">How can I become a partner restaurant? <span>+</span></button>
+            <div class="faq-answer">You can become a partner restaurant by filling out the application form on our website's "Become a Partner" page.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question"> Is there a delivery fee?<span>+</span></button>
+            <div class="faq-answer"> Yes, there is a delivery fee, which varies depending on your location and order size. You can see the delivery fee at checkout.</div>
+        </div>
+    </section>
+    </section>
+    
+   
+    <script>
+        function toggleMenu() {
+            let nav = document.getElementById("nav-links");
+            nav.classList.toggle("show");
+        }
+    
+        document.querySelectorAll(".faq-question").forEach(button => {
+            button.addEventListener("click", () => {
+                button.parentElement.classList.toggle("active");
+            });
+        });
+    
+        // Read More Button
+        const readMoreBtn = document.querySelector('.read-more-btn');
+        if (readMoreBtn) { // Check if the element exists
+            readMoreBtn.addEventListener('click', () => {
+                window.location.href = 'your-other-page.html'; // Replace with your desired URL
+            });
+        }
+    
+        // Send Button - Modified
+        const sendBtn = document.querySelector('.sent-btn');
+        const questionInput = document.querySelector('#question-input');
+        const emailInput = document.querySelector('#email-input');
+        const notificationDiv = document.querySelector('#notification');
+        const notificationMessage = document.querySelector('#notification-message');
+    
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                if (questionInput.value.trim() !== '' && emailInput.value.trim() !== '') {
+                    notificationMessage.textContent = "Message sent successfully! We'll get back to you.";
+                    notificationDiv.style.backgroundColor = "#d4edda"; // Light green
+                    notificationDiv.style.color = "#155724"; // Dark green
+                    notificationDiv.style.display = "block"; // Show the notification
+                    questionInput.value = '';
+                    emailInput.value = '';
+                } else {
+                    notificationMessage.textContent = 'Please enter your question and Gmail address.';
+                    notificationDiv.style.backgroundColor = "#f8d7da"; // Light red
+                    notificationDiv.style.color = "#721c24"; // Dark red
+                    notificationDiv.style.display = "block"; // Show the notification
+                }
+            });
+        }
+    </script>
+<section class="blog">
+    <h2>Latest from Our Blog</h2>
+    <div class="blog-container">
+     
+        <div class="blog-cards">
+            <article class="blog-card">
+                <img src="index/traffic.jpg" alt="Wake Up and Smell the Coffee">
+                <div class="blog-content">
+                    <h3><a href="#">Navigating Traffic: Our Secret to Swift Deliveries</a></h3>
+                    <a href="../Blog/Traffic.html" class="read-more">Read Now</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <img src="index/delivery.jpg" alt="NASA Office">
+                <div class="blog-content">
+                    <h3><a href="#">The NineFive Express Food Delivery Experience</a></h3>
+                    <a href="../Blog/Delivery.html" class="read-more">Read Now</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <img src="index/Partner.jpg" alt="Saharan Sands">
+                <div class="blog-content">
+                    <h3><a href="#">Partnering with NineFive Express</a></h3>
+                    <a href="../Blog/Partner.html" class="read-more">Read Now</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <img src="index/social.jpg" alt="Saharan Sands">
+                <div class="blog-content">
+                    <h3><a href="#">Our Commitment to Community</a></h3>
+                    <a href="../Blog/Commitment.html" class="read-more">Read Now</a>
+                </div>
+            </article>
+        </div>
+        </div>
+    </div>
+</section>
+
+</section>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>Nine Five Express</h3>
+            <p>Your reliable platform for efficient and timely deliveries.</p>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-links-row">
+                <a href="../Order.html/Order.html" class="Order Now">Order Now</a>
+            <a href="../About/about.html" class="About Us">About Us</a>
+            </div>
+            <div class="footer-links-row">
+                <a href="../Blog/blog.html" class="Blog">Blog</a>
+                <a href="../Contact.html/contact.html" class="Contact Us"> Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="copyright">Copyright © 2025 Nine Five Express. All Rights Reserved.</p>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinksContainer = document.querySelector('.nav-links-container');
+
+        hamburger.addEventListener('click', function() {
+            navLinksContainer.classList.toggle('active');
+        });
+    });
+</script>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
